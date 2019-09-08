@@ -1,10 +1,13 @@
 const rp = require('request-promise');
 const cheerio = require('cheerio');
+const log4js = require('log4js');
 
 const { auto } = require('./../../config/index');
 const Article = require('../../models/article');
 const dingTalkRobot = require('./../../notifyClient/dingtalk');
 
+// 日志管理
+const logger = log4js.getLogger('cheese');
 
 const autoProjectCall = () => {
   rp(auto.url + '/index.html')
@@ -12,7 +15,7 @@ const autoProjectCall = () => {
     analysisHtml(htmlString);
   })
   .catch((err) => {
-      // Crawling failed...
+    logger.error(err);
   });
 }
 
@@ -20,7 +23,6 @@ const autoProjectCall = () => {
   // 解析HTML
 const analysisHtml = (html) => {
   const $ = cheerio.load(html);
-  // console.log(html);
   $('#posts article').each((index, item) => {
     const post = {
       url: auto.url + $(item).find('a').attr('href'),
@@ -29,7 +31,7 @@ const analysisHtml = (html) => {
     };
     Article.findOne({ 'title': post.title }, 'title cover', function (err, person) {
       if (err) {
-        console.log(err);
+        logger.error(err);
       } else {
         if (person === null) {
           const article = new Article(post);
@@ -38,11 +40,11 @@ const analysisHtml = (html) => {
             .then(result => {
               console.log(result, '保存成功！');
               // 钉钉通知群组
-              result.text = `${result.title}最新内容来自于《${auto.name}》`
+              result.text = `${result.title} -> 最新内容来自于《${auto.name}》`
               dingTalkRobot(result);
             })
             .catch(err => {
-              console.log(err);
+              logger.error(err);
             });
         }
       };
