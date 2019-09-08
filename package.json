@@ -1,0 +1,19 @@
+{
+  "name": "new_media_article",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index",
+    "start": "node index"
+  },
+  "repository": "https://github.com/jamesdanner/new_media_article.git",
+  "author": "james <1071714548@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "mongoose": "^5.6.13",
+    "node-schedule": "^1.3.2",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
+  }
+}
