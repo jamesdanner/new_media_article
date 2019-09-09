@@ -5,6 +5,10 @@ const projects = {
     name: '京东凹凸实验室',
     url: 'https://aotu.io'
   },
+  euxBaidu: {
+    name: '百度EUX',
+    url: 'http://eux.baidu.com'
+  }
 };
 
 // 客户端地址

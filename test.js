@@ -1,5 +1,20 @@
+const log4js = require('log4js');
+log4js.configure({
+  category: 'category1',
+  appenders: {
+    cheese: {
+      type: 'file',
+      filename: 'logs/cheese.log'
+    }
+  },
+  categories: {
+    default: {
+      appenders: ['cheese'],
+      level: 'info'
+    }
+  }
+});
 
- 
 // var log4js = require('log4js');
 // var logger = log4js.getLogger();
 // logger.level = 'debug';
