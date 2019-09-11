@@ -37,4 +37,6 @@ schedule.scheduleJob('00 00 10 * * *', () => {
   feTaobaoProjectCall();
 });
 
+// autoProjectCall();
 // euxBaiduProjectCall();
+feTaobaoProjectCall();
