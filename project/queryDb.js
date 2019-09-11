@@ -34,7 +34,6 @@ const queryDb = (post, webSite, articleTotal, index) => {
             }
             if ((index + 1) === articleTotal && articleCount > 0) {
               console.log('执行');
-              
               dingTalkRobot(result);
               articleCount = 0;
             }

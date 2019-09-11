@@ -3,11 +3,15 @@
 const projects = {
   auto: {
     name: '京东凹凸实验室',
-    url: 'https://aotu.io'
+    host: 'https://aotu.io'
   },
   euxBaidu: {
     name: '百度EUX',
-    url: 'http://eux.baidu.com'
+    host: 'http://eux.baidu.com'
+  },
+  feTaobao: {
+    name: '淘系前端团队（FED）',
+    host: 'https://fed.taobao.org/'
   }
 };
 

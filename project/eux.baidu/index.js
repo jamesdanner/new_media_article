@@ -9,7 +9,7 @@ const queryDb = require('./../queryDb');
 const logger = log4js.getLogger('cheese');
 
 const euxBaiduProjectCall = () => {
-  rp(euxBaidu.url + '/fe')
+  rp(euxBaidu.host + '/fe')
   .then((htmlString) => {
     analysisHtml(htmlString);
   })
@@ -25,7 +25,7 @@ const analysisHtml = (html) => {
   const articleTotal = $('.eux-stream .inner article').length;
   $('.eux-stream .inner article').each((index, item) => {
     const post = {
-      url: euxBaidu.url + $(item).find('a').attr('href'),
+      url: euxBaidu.host + $(item).find('a').attr('href'),
       cover: $(item).find('img').attr('src'),
       title: $(item).find('h2 a').text(),
     };

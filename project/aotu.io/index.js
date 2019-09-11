@@ -9,7 +9,7 @@ const queryDb = require('./../queryDb');
 const logger = log4js.getLogger('cheese');
 
 const autoProjectCall = () => {
-  rp(auto.url + '/index.html')
+  rp(auto.host + '/index.html')
   .then((htmlString) => {
     analysisHtml(htmlString);
   })
@@ -25,7 +25,7 @@ const analysisHtml = (html) => {
   const articleTotal = $('#posts article').length;
   $('#posts article').each((index, item) => {
     const post = {
-      url: auto.url + $(item).find('a').attr('href'),
+      url: auto.host + $(item).find('a').attr('href'),
       cover: $(item).find('img').attr('src'),
       title: $(item).find('a').attr('title')
     };
