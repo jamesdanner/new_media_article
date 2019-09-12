@@ -23,6 +23,7 @@ log4js.configure({
 const autoProjectCall = require('./project/aotu.io/index');
 const euxBaiduProjectCall = require('./project/eux.baidu/index');
 const feTaobaoProjectCall = require('./project/fe.taobao/index');
+const uedCtripProjectCall = require('./project/ued.ctrip/index');
 
 mongoose.connect('mongodb://localhost:27017/media');
 const db = mongoose.connection;
@@ -35,8 +36,5 @@ schedule.scheduleJob('00 00 10 * * *', () => {
   autoProjectCall();
   euxBaiduProjectCall();
   feTaobaoProjectCall();
+  uedCtripProjectCall();
 });
-
-// autoProjectCall();
-// euxBaiduProjectCall();
-feTaobaoProjectCall();

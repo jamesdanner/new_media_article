@@ -12,6 +12,11 @@ const projects = {
   feTaobao: {
     name: '淘系前端团队（FED）',
     host: 'https://fed.taobao.org/'
+  },
+  uedCtrip: {
+    name: '携程设计委员会',
+    host: 'http://ued.ctrip.com/',
+    cover: 'http://5b0988e595225.cdn.sohucs.com/images/20190305/ea7cf5238f464503a6a7df12eaffa19d.jpeg',
   }
 };
 

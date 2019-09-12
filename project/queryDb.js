@@ -10,14 +10,13 @@ const logger = log4js.getLogger('cheese');
 
 let articleCount = 0;
 
-exports.queryDb = (post, webSite, articleTotal, index, next) => {
-  Article.findOne({ 'title': post.title }, 'title cover', function (err, person) {
+const queryDb = (post, webSite, articleTotal, index, next) => {
+  Article.findOne({ 'title': post.title }, 'title cover', function (err, doc) {
     if (err) {
-      console.err(err);
       logger.error(err);
       next();
     } else {
-      if (person === null) {
+      if (doc === null) {
         // 有 n 条数据的情况
         articleCount ++;
         const article = new Article(post);
@@ -25,7 +24,6 @@ exports.queryDb = (post, webSite, articleTotal, index, next) => {
           .save()
           .then(result => {
             next();
-            // console.log(post, webSite, articleTotal, index, '保存成功！');
             // 钉钉通知群组
             if (articleCount > 1) {
               result.text = `${result.title} -> 最新内容来自于《${webSite.name}》 | 一共有${articleCount}条新内容请注意`;
@@ -49,3 +47,5 @@ exports.queryDb = (post, webSite, articleTotal, index, next) => {
     };
   });
 }
+
+module.exports = queryDb;
