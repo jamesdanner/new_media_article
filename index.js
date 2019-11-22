@@ -33,8 +33,11 @@ db.once('open', () => console.log('mongoose is ok!'));
 schedule.scheduleJob('00 00 10 * * *', () => {
   // 凹凸实验室
   logger.info('凹凸实验室 启动');
-  autoProjectCall();
-  euxBaiduProjectCall();
-  feTaobaoProjectCall();
-  uedCtripProjectCall();
+  // autoProjectCall();
+  // euxBaiduProjectCall();
+  // feTaobaoProjectCall();
+  // uedCtripProjectCall();
 });
+
+
+feTaobaoProjectCall();
